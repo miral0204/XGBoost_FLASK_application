@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Data Visualization</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Heart Disease Data Visualization</h1>
+    
+    <div class="container">
+        <!-- Introduction Section -->
+        <section class="introduction">
+            <h2> <b>What is GB and XGB? </b></h2>
+            <p>XGBoost is a decision-tree-based ensemble Machine Learning algorithm that uses a gradient boosting framework. It can be used to solve regression and classification problems.</p>
+            <p>XGBoost is an implementation of gradient-boosted decision trees designed for speed and performance.</p>
+            <p>Boosting is an ensemble technique where new models are added to correct the errors made by existing models. Models are added sequentially until no further improvements can be made.</p>
+            <p>Gradient boosting is an approach where new models are created that predict the residuals or errors of prior models and then added together to make the final prediction. It is called gradient boosting because it uses a gradient descent algorithm to minimize the loss when adding new models.</p>
+            <p>This approach supports both regression and classification predictive modeling problems.</p>
+            <p>Decision tree, Bagging, Random forest, Boosting, Gradient Boosting, XGBoost</p>
+            <img src="{{ url_for('static', filename='xgboost_image.png') }}" alt="XGBoost Image" class="medium-image">
+            
+            <h3>Why Does XGBoost Perform So Well?</h3>
+            <ul>
+                <li><strong>Regularization:</strong> This is considered to be a dominant factor of the algorithm. Regularization is a technique used to avoid overfitting of the model.</li>
+                <li><strong>Cross-Validation:</strong> While we use cross-validation by importing functions from sklearn, XGBoost has an inbuilt CV function.</li>
+                <li><strong>Missing Value:</strong> XGBoost can handle missing values by finding trends in the missing values and addressing them.</li>
+                <li><strong>Flexibility:</strong> It supports objective functions and can handle user-defined validation metrics.</li>
+            </ul>
+            
+            <h3>System Optimization</h3>
+            <ul>
+                <li><strong>Parallelization:</strong> XGBoost uses parallelized implementation to speed up the process of sequential tree building.</li>
+                <li><strong>Tree Pruning:</strong> XGBoost uses the ‘max_depth’ parameter for pruning trees backward, which improves computational performance.</li>
+                <li><strong>Hardware Optimization:</strong> Designed to efficiently use hardware resources through cache awareness and ‘out-of-core’ computing.</li>
+            </ul>
+            
+            <h3>When to Use XGBoost?</h3>
+            <ul>
+                <li>When you have a large number of observations in training data.</li>
+                <li>When the number of features is less than the number of observations in the training data.</li>
+                <li>When your data contains a mixture of numerical and categorical features or just numeric features.</li>
+                <li>When model performance metrics are a key consideration.</li>
+            </ul>
+        </section>
+        
+        <!-- EDA Section -->
+        <h2>Exploratory Data Analysis (EDA)</h2>
+        <h3>Histograms of Each Column</h3>
+        <img src="{{ url_for('static', filename='histogram.png') }}" alt="Histogram" class="medium-image">
+        <h3>Histograms with Heart Disease Hue</h3>
+        <img src="{{ url_for('static', filename='histogram_hue.png') }}" alt="Histogram with Hue" class="medium-image">
+        <h3>Correlation Heatmap</h3>
+        <img src="{{ url_for('static', filename='correlation_heatmap.png') }}" alt="Correlation Heatmap" class="large-image">
+
+        <h2>Model Evaluation</h2>
+        <h3>Training Data Classification Report</h3>
+        <div class="report">
+            {{ train_report|safe }}
+        </div>
+        <h3>Testing Data Classification Report</h3>
+        <div class="report">
+            {{ test_report|safe }}
+        </div>
+    </div>
+</body>
+</html>
